@@ -21,6 +21,7 @@ function setPropertyInventoryData(data)
     items = {}
 
     local blackMoney = data.blackMoney
+	local cashMoney = data.cashMoney
     local propertyItems = data.items
     local propertyWeapons = data.weapons
 
@@ -30,6 +31,20 @@ function setPropertyInventoryData(data)
             count = blackMoney,
             type = "item_account",
             name = "black_money",
+            usable = false,
+            rare = false,
+            limit = -1,
+            canRemove = false
+        }
+        table.insert(items, accountData)
+    end
+
+	if cashMoney > 0 then
+        accountData = {
+            label = _U("cash"),
+            count = cashMoney,
+            type = "item_money",
+            name = "cash",
             usable = false,
             rare = false,
             limit = -1,
